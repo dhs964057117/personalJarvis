@@ -1,0 +1,223 @@
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJsonObject.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonObject
+com/live2d/sdk/cubism/framework/physics/package-info.java
+ com.live2d.sdk.cubism.framework.physics.package-info
+com/live2d/sdk/cubism/framework/rendering/android/CubismShaderPrograms.java
+ com.live2d.sdk.cubism.framework.rendering.android.CubismShaderPrograms
+ com.live2d.sdk.cubism.framework.rendering.android.CubismShaderPrograms$CsmFragmentShaderFpPrecision
+com/live2d/sdk/cubism/framework/model/CubismModelUserDataJson.java
+ com.live2d.sdk.cubism.framework.model.CubismModelUserDataJson
+ com.live2d.sdk.cubism.framework.model.CubismModelUserDataJson$JsonKey
+com/live2d/sdk/cubism/framework/motion/CubismMotionQueueManager.java
+ com.live2d.sdk.cubism.framework.motion.CubismMotionQueueManager
+com/live2d/sdk/cubism/framework/CubismModelSettingJson.java
+ com.live2d.sdk.cubism.framework.CubismModelSettingJson
+ com.live2d.sdk.cubism.framework.CubismModelSettingJson$FrequentNode
+ com.live2d.sdk.cubism.framework.CubismModelSettingJson$JsonKey
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJsonErrorValue.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonErrorValue
+com/live2d/sdk/cubism/framework/id/CubismId.java
+ com.live2d.sdk.cubism.framework.id.CubismId
+com/live2d/sdk/cubism/framework/model/package-info.java
+ com.live2d.sdk.cubism.framework.model.package-info
+com/live2d/sdk/cubism/framework/id/package-info.java
+ com.live2d.sdk.cubism.framework.id.package-info
+com/live2d/sdk/cubism/framework/exception/CubismJsonSyntaxErrorException.java
+ com.live2d.sdk.cubism.framework.exception.CubismJsonSyntaxErrorException
+com/live2d/sdk/cubism/framework/physics/CubismPhysicsJson.java
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsJson
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsJson$JsonKey
+com/live2d/sdk/cubism/framework/exception/CubismException.java
+ com.live2d.sdk.cubism.framework.exception.CubismException
+com/live2d/sdk/cubism/framework/CubismFrameworkConfig.java
+ com.live2d.sdk.cubism.framework.CubismFrameworkConfig
+ com.live2d.sdk.cubism.framework.CubismFrameworkConfig$LogLevel
+com/live2d/sdk/cubism/framework/exception/CubismJsonParseException.java
+ com.live2d.sdk.cubism.framework.exception.CubismJsonParseException
+com/live2d/sdk/cubism/framework/rendering/CubismRenderer.java
+ com.live2d.sdk.cubism.framework.rendering.CubismRenderer
+ com.live2d.sdk.cubism.framework.rendering.CubismRenderer$CubismBlendMode
+ com.live2d.sdk.cubism.framework.rendering.CubismRenderer$CubismTextureColor
+com/live2d/sdk/cubism/framework/model/CubismModel.java
+ com.live2d.sdk.cubism.framework.model.CubismModel
+ com.live2d.sdk.cubism.framework.model.CubismModel$DrawableColorData
+ com.live2d.sdk.cubism.framework.model.CubismModel$DrawableCullingData
+com/live2d/sdk/cubism/framework/physics/CubismPhysicsInternal.java
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$CubismPhysicsInput
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$CubismPhysicsNormalization
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$CubismPhysicsOutput
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$CubismPhysicsParameter
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$CubismPhysicsParticle
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$CubismPhysicsRig
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$CubismPhysicsSource
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$CubismPhysicsSubRig
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$CubismPhysicsTargetType
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$NormalizedPhysicsParameterValueGetter
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$PhysicsJsonEffectiveForces
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$PhysicsScaleGetter
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsInternal$PhysicsValueGetter
+com/live2d/sdk/cubism/framework/motion/CubismMotionQueueEntry.java
+ com.live2d.sdk.cubism.framework.motion.CubismMotionQueueEntry
+com/live2d/sdk/cubism/framework/math/CubismModelMatrix.java
+ com.live2d.sdk.cubism.framework.math.CubismModelMatrix
+com/live2d/sdk/cubism/framework/exception/CubismRuntimeException.java
+ com.live2d.sdk.cubism.framework.exception.CubismRuntimeException
+com/live2d/sdk/cubism/framework/rendering/android/package-info.java
+ com.live2d.sdk.cubism.framework.rendering.android.package-info
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJsonBoolean.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonBoolean
+com/live2d/sdk/cubism/framework/motion/CubismExpressionMotion.java
+ com.live2d.sdk.cubism.framework.motion.CubismExpressionMotion
+ com.live2d.sdk.cubism.framework.motion.CubismExpressionMotion$1
+ com.live2d.sdk.cubism.framework.motion.CubismExpressionMotion$ExpressionBlendType
+ com.live2d.sdk.cubism.framework.motion.CubismExpressionMotion$ExpressionKey
+ com.live2d.sdk.cubism.framework.motion.CubismExpressionMotion$ExpressionParameter
+com/live2d/sdk/cubism/framework/effect/package-info.java
+ com.live2d.sdk.cubism.framework.effect.package-info
+com/live2d/sdk/cubism/framework/utils/jsonparser/package-info.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.package-info
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJsonNumber.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonNumber
+com/live2d/sdk/cubism/framework/motion/CubismMotionInternal.java
+ com.live2d.sdk.cubism.framework.motion.CubismMotionInternal
+ com.live2d.sdk.cubism.framework.motion.CubismMotionInternal$CsmMotionSegmentEvaluationFunction
+ com.live2d.sdk.cubism.framework.motion.CubismMotionInternal$CubismMotionCurve
+ com.live2d.sdk.cubism.framework.motion.CubismMotionInternal$CubismMotionCurveTarget
+ com.live2d.sdk.cubism.framework.motion.CubismMotionInternal$CubismMotionData
+ com.live2d.sdk.cubism.framework.motion.CubismMotionInternal$CubismMotionEvent
+ com.live2d.sdk.cubism.framework.motion.CubismMotionInternal$CubismMotionPoint
+ com.live2d.sdk.cubism.framework.motion.CubismMotionInternal$CubismMotionSegment
+ com.live2d.sdk.cubism.framework.motion.CubismMotionInternal$CubismMotionSegmentType
+com/live2d/sdk/cubism/framework/rendering/android/CubismShaderAndroid.java
+ com.live2d.sdk.cubism.framework.rendering.android.CubismShaderAndroid
+ com.live2d.sdk.cubism.framework.rendering.android.CubismShaderAndroid$1
+ com.live2d.sdk.cubism.framework.rendering.android.CubismShaderAndroid$CubismShaderSet
+ com.live2d.sdk.cubism.framework.rendering.android.CubismShaderAndroid$ShaderNames
+com/live2d/sdk/cubism/framework/motion/package-info.java
+ com.live2d.sdk.cubism.framework.motion.package-info
+com/live2d/sdk/cubism/framework/motion/CubismMotionJson.java
+ com.live2d.sdk.cubism.framework.motion.CubismMotionJson
+ com.live2d.sdk.cubism.framework.motion.CubismMotionJson$EvaluationOptionFlag
+ com.live2d.sdk.cubism.framework.motion.CubismMotionJson$JsonKey
+com/live2d/sdk/cubism/framework/exception/package-info.java
+ com.live2d.sdk.cubism.framework.exception.package-info
+com/live2d/sdk/cubism/framework/math/CubismVector2.java
+ com.live2d.sdk.cubism.framework.math.CubismVector2
+com/live2d/sdk/cubism/framework/physics/CubismPhysics.java
+ com.live2d.sdk.cubism.framework.physics.CubismPhysics
+ com.live2d.sdk.cubism.framework.physics.CubismPhysics$Options
+ com.live2d.sdk.cubism.framework.physics.CubismPhysics$PhysicsOutput
+ com.live2d.sdk.cubism.framework.physics.CubismPhysics$PhysicsTypeTag
+com/live2d/sdk/cubism/framework/motion/CubismMotionManager.java
+ com.live2d.sdk.cubism.framework.motion.CubismMotionManager
+com/live2d/sdk/cubism/framework/model/CubismUserModel.java
+ com.live2d.sdk.cubism.framework.model.CubismUserModel
+ com.live2d.sdk.cubism.framework.model.CubismUserModel$1
+com/live2d/sdk/cubism/framework/CubismFramework.java
+ com.live2d.sdk.cubism.framework.CubismFramework
+ com.live2d.sdk.cubism.framework.CubismFramework$Option
+com/live2d/sdk/cubism/framework/effect/CubismEyeBlink.java
+ com.live2d.sdk.cubism.framework.effect.CubismEyeBlink
+ com.live2d.sdk.cubism.framework.effect.CubismEyeBlink$1
+ com.live2d.sdk.cubism.framework.effect.CubismEyeBlink$EyeState
+com/live2d/sdk/cubism/framework/model/CubismModelUserData.java
+ com.live2d.sdk.cubism.framework.model.CubismModelUserData
+ com.live2d.sdk.cubism.framework.model.CubismModelUserData$CubismModelUserDataNode
+com/live2d/sdk/cubism/framework/utils/CubismDebug.java
+ com.live2d.sdk.cubism.framework.utils.CubismDebug
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJsonArray.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonArray
+com/live2d/sdk/cubism/framework/utils/package-info.java
+ com.live2d.sdk.cubism.framework.utils.package-info
+com/live2d/sdk/cubism/framework/motion/CubismMotion.java
+ com.live2d.sdk.cubism.framework.motion.CubismMotion
+ com.live2d.sdk.cubism.framework.motion.CubismMotion$1
+ com.live2d.sdk.cubism.framework.motion.CubismMotion$BezierEvaluator
+ com.live2d.sdk.cubism.framework.motion.CubismMotion$BezierEvaluatorCardanoInterpretation
+ com.live2d.sdk.cubism.framework.motion.CubismMotion$EffectName
+ com.live2d.sdk.cubism.framework.motion.CubismMotion$InverseSteppedEvaluator
+ com.live2d.sdk.cubism.framework.motion.CubismMotion$LinearEvaluator
+ com.live2d.sdk.cubism.framework.motion.CubismMotion$SteppedEvaluator
+ com.live2d.sdk.cubism.framework.motion.CubismMotion$TargetName
+com/live2d/sdk/cubism/framework/motion/IFinishedMotionCallback.java
+ com.live2d.sdk.cubism.framework.motion.IFinishedMotionCallback
+com/live2d/sdk/cubism/framework/rendering/android/CubismRendererProfileAndroid.java
+ com.live2d.sdk.cubism.framework.rendering.android.CubismRendererProfileAndroid
+com/live2d/sdk/cubism/framework/rendering/android/CubismClippingContext.java
+ com.live2d.sdk.cubism.framework.rendering.android.CubismClippingContext
+com/live2d/sdk/cubism/framework/rendering/package-info.java
+ com.live2d.sdk.cubism.framework.rendering.package-info
+com/live2d/sdk/cubism/framework/CubismDefaultParameterId.java
+ com.live2d.sdk.cubism.framework.CubismDefaultParameterId
+ com.live2d.sdk.cubism.framework.CubismDefaultParameterId$HitAreaId
+ com.live2d.sdk.cubism.framework.CubismDefaultParameterId$ParameterId
+ com.live2d.sdk.cubism.framework.CubismDefaultParameterId$PartId
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJson.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJson
+com/live2d/sdk/cubism/framework/utils/jsonparser/ACubismJsonValue.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.ACubismJsonValue
+ com.live2d.sdk.cubism.framework.utils.jsonparser.ACubismJsonValue$JsonError
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJsonLexer.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonLexer
+com/live2d/sdk/cubism/framework/rendering/android/CubismRendererAndroid.java
+ com.live2d.sdk.cubism.framework.rendering.android.CubismRendererAndroid
+com/live2d/sdk/cubism/framework/math/CubismMatrix44.java
+ com.live2d.sdk.cubism.framework.math.CubismMatrix44
+com/live2d/sdk/cubism/framework/effect/CubismBreath.java
+ com.live2d.sdk.cubism.framework.effect.CubismBreath
+ com.live2d.sdk.cubism.framework.effect.CubismBreath$BreathParameterData
+com/live2d/sdk/cubism/framework/math/CubismMath.java
+ com.live2d.sdk.cubism.framework.math.CubismMath
+com/live2d/sdk/cubism/framework/rendering/android/CubismOffscreenSurfaceAndroid.java
+ com.live2d.sdk.cubism.framework.rendering.android.CubismOffscreenSurfaceAndroid
+com/live2d/sdk/cubism/framework/model/CubismMoc.java
+ com.live2d.sdk.cubism.framework.model.CubismMoc
+com/live2d/sdk/cubism/framework/rendering/android/CubismClippingManagerAndroid.java
+ com.live2d.sdk.cubism.framework.rendering.android.CubismClippingManagerAndroid
+ com.live2d.sdk.cubism.framework.rendering.android.CubismClippingManagerAndroid$CubismRenderTextureResource
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJsonNullValue.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonNullValue
+com/live2d/sdk/cubism/framework/motion/ICubismMotionEventFunction.java
+ com.live2d.sdk.cubism.framework.motion.ICubismMotionEventFunction
+com/live2d/sdk/cubism/framework/physics/CubismPhysicsFunctions.java
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions$GetInputAngleFromNormalizedParameterValue
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions$GetInputTranslationXFromNormalizedParameterValue
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions$GetInputTranslationYFromNormalizedParameterValue
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions$GetOutputAngle
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions$GetOutputScaleAngle
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions$GetOutputScaleTranslationX
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions$GetOutputScaleTranslationY
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions$GetOutputTranslationX
+ com.live2d.sdk.cubism.framework.physics.CubismPhysicsFunctions$GetOutputTranslationY
+com/live2d/sdk/cubism/framework/CubismCdiJson.java
+ com.live2d.sdk.cubism.framework.CubismCdiJson
+ com.live2d.sdk.cubism.framework.CubismCdiJson$JsonKey
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJsonToken.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonToken
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonToken$TokenType
+com/live2d/sdk/cubism/framework/effect/CubismPose.java
+ com.live2d.sdk.cubism.framework.effect.CubismPose
+ com.live2d.sdk.cubism.framework.effect.CubismPose$JsonTag
+ com.live2d.sdk.cubism.framework.effect.CubismPose$PartData
+com/live2d/sdk/cubism/framework/utils/jsonparser/CubismJsonString.java
+ com.live2d.sdk.cubism.framework.utils.jsonparser.CubismJsonString
+com/live2d/sdk/cubism/framework/math/package-info.java
+ com.live2d.sdk.cubism.framework.math.package-info
+com/live2d/sdk/cubism/framework/exception/CubismJsonRuntimeException.java
+ com.live2d.sdk.cubism.framework.exception.CubismJsonRuntimeException
+com/live2d/sdk/cubism/framework/BuildConfig.java
+ com.live2d.sdk.cubism.framework.BuildConfig
+com/live2d/sdk/cubism/framework/math/CubismTargetPoint.java
+ com.live2d.sdk.cubism.framework.math.CubismTargetPoint
+com/live2d/sdk/cubism/framework/id/CubismIdManager.java
+ com.live2d.sdk.cubism.framework.id.CubismIdManager
+com/live2d/sdk/cubism/framework/type/csmRectF.java
+ com.live2d.sdk.cubism.framework.type.csmRectF
+com/live2d/sdk/cubism/framework/ICubismModelSetting.java
+ com.live2d.sdk.cubism.framework.ICubismModelSetting
+com/live2d/sdk/cubism/framework/motion/ACubismMotion.java
+ com.live2d.sdk.cubism.framework.motion.ACubismMotion
+com/live2d/sdk/cubism/framework/math/CubismViewMatrix.java
+ com.live2d.sdk.cubism.framework.math.CubismViewMatrix
