@@ -18,3 +18,5 @@ include ':app'
 include ':Framework:framework'
 //include ':Sample'
 include ':vosk_voice_models'
+include ':VITS'
+

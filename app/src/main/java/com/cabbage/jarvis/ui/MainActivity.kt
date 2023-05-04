@@ -9,13 +9,20 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.baidu.location.LocationClient
+import com.cabbage.jarvis.App
 import com.cabbage.jarvis.BaiduLocation
 import com.cabbage.jarvis.BaiduLocation.isLocServiceEnable
 import com.cabbage.jarvis.R
+import com.cabbage.jarvis.data.ChannelListBean
 import com.cabbage.jarvis.databinding.ActivityMainBinding
 import com.cabbage.jarvis.full.MainActivity
 import com.cabbage.jarvis.utils.AT
+import com.cabbage.jarvis.utils.LocalModelManager
+import com.chatwaifu.vits.utils.SoundGenerateHelper
+import com.qweather.sdk.view.HeContext.context
+import kotlinx.coroutines.launch
 import org.vosk.android.RecognitionListener
 import permissions.dispatcher.*
 import java.lang.Exception
@@ -25,7 +32,6 @@ class MainActivity : AppCompatActivity(), RecognitionListener {
 
     private val TAG = "MainActivity"
     private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,7 +43,6 @@ class MainActivity : AppCompatActivity(), RecognitionListener {
 
 //        getWeather()
         binding.startService.setOnClickListener(this@MainActivity::onClick)
-
     }
 
     fun onClick(view: View) {

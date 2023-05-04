@@ -4,215 +4,201 @@
  * Use of this source code is governed by the Live2D Open Software license
  * that can be found at http://live2d.com/eula/live2d-open-software-license-agreement_en.html.
  */
+package com.cabbage.jarvis.full
 
-package com.cabbage.jarvis.full;
+import android.opengl.GLSurfaceView
+import android.os.Build
+import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
+import com.cabbage.jarvis.VoskVoiceManager.initModel
+import com.cabbage.jarvis.BaiduLocation.startLoc
+import com.cabbage.jarvis.Weather.getGeoCity
+import com.cabbage.jarvis.utils.AT.toastError
+import com.cabbage.jarvis.Weather.getWeather
+import com.cabbage.jarvis.utils.AT.toastSuccess
+import androidx.appcompat.app.AppCompatActivity
+import com.cabbage.jarvis.ui.InitViewModel
+import com.cabbage.jarvis.utils.LocalModelManager
+import com.cabbage.jarvis.App
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.cabbage.jarvis.data.ChannelListBean
+import com.qweather.sdk.view.HeContext
+import com.cabbage.jarvis.BaiduLocation.MyLocationListener
+import com.baidu.location.BDLocation
+import com.cabbage.jarvis.databinding.ActivityMainTempBinding
+import com.cabbage.jarvis.utils.AT
+import com.qweather.sdk.bean.base.Lang
+import com.qweather.sdk.view.QWeather.OnResultGeoListener
+import com.qweather.sdk.bean.base.Range
+import com.qweather.sdk.bean.geo.GeoBean
+import com.qweather.sdk.view.QWeather.OnResultWeatherNowListener
+import com.qweather.sdk.bean.weather.WeatherNowBean
+import com.qweather.sdk.view.HeContext.context
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.vosk.android.RecognitionListener
+import java.lang.Exception
+import java.util.ArrayList
 
-import android.app.Activity;
-import android.opengl.GLSurfaceView;
-import android.os.Build;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.WindowInsets;
-import android.view.WindowInsetsController;
-import android.widget.Toast;
+class MainActivity : AppCompatActivity(), RecognitionListener {
+    private val TAG = "FullMainActivity"
+    private var binding: ActivityMainTempBinding? = null
+    private var viewModel: InitViewModel? = null
+    val localModelManager = LocalModelManager()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainTempBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)
+        viewModel = ViewModelProvider(this).get(InitViewModel::class.java)
+        val finalModelList = mutableListOf<ChannelListBean>()
+        lifecycleScope.launch {
+            withContext(this.coroutineContext) {
+                localModelManager.initInnerModel(this@MainActivity, finalModelList)
+                localModelManager.initExternalModel(this@MainActivity, finalModelList)
+                viewModel!!.loadVitsModel(finalModelList[0].characterVitsPath)
+            }
+        }
+        glSurfaceView = binding!!.gf
+        glSurfaceView!!.setEGLContextClientVersion(2) // OpenGL ES 2.0を利用
+        glRenderer = GLRenderer()
+        glSurfaceView!!.setRenderer(glRenderer)
+        glSurfaceView!!.renderMode = GLSurfaceView.RENDERMODE_CONTINUOUSLY
 
-import androidx.annotation.NonNull;
-
-import com.baidu.location.BDLocation;
-import com.cabbage.jarvis.App;
-import com.cabbage.jarvis.BaiduLocation;
-import com.cabbage.jarvis.VoskVoiceManager;
-import com.cabbage.jarvis.Weather;
-import com.cabbage.jarvis.utils.AT;
-import com.qweather.sdk.bean.base.Lang;
-import com.qweather.sdk.bean.base.Range;
-import com.qweather.sdk.bean.geo.GeoBean;
-import com.qweather.sdk.bean.grid.GridWeatherNowBean;
-import com.qweather.sdk.bean.weather.WeatherNowBean;
-import com.qweather.sdk.view.QWeather;
-
-import org.vosk.android.RecognitionListener;
-
-public class MainActivity extends Activity implements RecognitionListener {
-    private String TAG = "FullMainActivity";
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        glSurfaceView = new GLSurfaceView(this);
-        glSurfaceView.setEGLContextClientVersion(2);       // OpenGL ES 2.0を利用
-
-        glRenderer = new GLRenderer();
-
-        glSurfaceView.setRenderer(glRenderer);
-        glSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
-
-        setContentView(glSurfaceView);
-
+//        setContentView(glSurfaceView);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT
-                            ? View.SYSTEM_UI_FLAG_LOW_PROFILE
-                            : View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-            );
+            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_FULLSCREEN
+                    or if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) View.SYSTEM_UI_FLAG_LOW_PROFILE else View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
         } else {
-            getWindow().getInsetsController().hide(WindowInsets.Type.navigationBars() | WindowInsets.Type.statusBars());
-
-            getWindow().getInsetsController().setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+            window.insetsController!!.hide(WindowInsets.Type.navigationBars() or WindowInsets.Type.statusBars())
+            window.insetsController!!.systemBarsBehavior =
+                WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
-        VoskVoiceManager.INSTANCE.initModel(this);
+        initModel(this)
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        LAppDelegate.getInstance().onStart(this);
-
+    override fun onStart() {
+        super.onStart()
+        LAppDelegate.getInstance().onStart(this)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        glSurfaceView.onResume();
-
-        View decor = this.getWindow().getDecorView();
-        decor.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-        );
+    override fun onResume() {
+        super.onResume()
+        glSurfaceView!!.onResume()
+        val decor = this.window.decorView
+        decor.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        glSurfaceView.onPause();
-        LAppDelegate.getInstance().onPause();
+    override fun onPause() {
+        super.onPause()
+        glSurfaceView!!.onPause()
+        LAppDelegate.getInstance().onPause()
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        LAppDelegate.getInstance().onStop();
-
+    override fun onStop() {
+        super.onStop()
+        LAppDelegate.getInstance().onStop()
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        LAppDelegate.getInstance().onDestroy();
-
+    override fun onDestroy() {
+        super.onDestroy()
+        LAppDelegate.getInstance().onDestroy()
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        float pointX = event.getX();
-        float pointY = event.getY();
-
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                LAppDelegate.getInstance().onTouchBegan(pointX, pointY);
-                break;
-            case MotionEvent.ACTION_UP:
-                LAppDelegate.getInstance().onTouchEnd(pointX, pointY);
-                break;
-            case MotionEvent.ACTION_MOVE:
-                LAppDelegate.getInstance().onTouchMoved(pointX, pointY);
-                break;
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        val pointX = event.x
+        val pointY = event.y
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> LAppDelegate.getInstance().onTouchBegan(pointX, pointY)
+            MotionEvent.ACTION_UP -> LAppDelegate.getInstance().onTouchEnd(pointX, pointY)
+            MotionEvent.ACTION_MOVE -> LAppDelegate.getInstance().onTouchMoved(pointX, pointY)
         }
-        return super.onTouchEvent(event);
+        return super.onTouchEvent(event)
     }
 
-    private GLSurfaceView glSurfaceView;
-    private GLRenderer glRenderer;
-
-    @Override
-    public void onPartialResult(String hypothesis) {
+    private var glSurfaceView: GLSurfaceView? = null
+    private var glRenderer: GLRenderer? = null
+    override fun onPartialResult(hypothesis: String) {
 //        Log.i(TAG, "onPartialResult: " + hypothesis);
     }
 
-    @Override
-    public void onResult(String hypothesis) {
-        Log.i(TAG, "onResult: " + hypothesis);
-        resolveMessage(hypothesis);
+    override fun onResult(hypothesis: String) {
+        Log.i(TAG, "onResult: $hypothesis")
+        resolveMessage(hypothesis)
     }
 
-    private void resolveMessage(String hypothesis) {
+    private fun resolveMessage(hypothesis: String) {
         if (hypothesis.contains("天气")) {
-            getWeather();
+           viewModel!!.vitsHelper.generateAndPlay("こんにちは、私はあなたの助手です") {
+                AT.toastInfo(it.toString())
+            };
+//            weather
         }
     }
 
-    @Override
-    public void onFinalResult(String hypothesis) {
+    override fun onFinalResult(hypothesis: String) {
 //        Log.i(TAG, "onFinalResult: " + hypothesis);
-
     }
 
-    @Override
-    public void onError(Exception exception) {
+    override fun onError(exception: Exception) {
 //        Log.i(TAG, "onError: " + exception);
     }
 
-    @Override
-    public void onTimeout() {
+    override fun onTimeout() {
 //        Log.i(TAG, "onTimeout: ");
     }
 
-
     //先定位 然后获取位置信息，然后获取天气
-    private void getWeather() {
-        BaiduLocation.INSTANCE.startLoc(new BaiduLocation.MyLocationListener() {
-            @Override
-            public void onReceiveLocation(@NonNull BDLocation location) {
-                super.onReceiveLocation(location);
-                Log.d(TAG, "onReceiveLocation: " + location);
-                if (location.getLocType() == 61 || location.getLocType() == 161) {
-                    Weather.INSTANCE.getGeoCity(location.getCity(), "", Range.CN, 1, Lang.ZH_HANS, new QWeather.OnResultGeoListener() {
-                        @Override
-                        public void onError(Throwable throwable) {
-                            AT.INSTANCE.toastError("获取定位失败");
-                        }
-
-                        @Override
-                        public void onSuccess(GeoBean geoBean) {
-                            Log.d(TAG, "onSuccess: " + geoBean.toString());
-                            GeoBean.LocationBean loc = geoBean.getLocationBean().get(0);
-                            Weather.INSTANCE.getWeather(loc.getId(), new QWeather.OnResultWeatherNowListener() {
-                                @Override
-                                public void onError(Throwable throwable) {
-                                    AT.INSTANCE.toastError("获取天气失败");
+    private val weather: Unit
+        private get() {
+            startLoc(object : MyLocationListener() {
+                override fun onReceiveLocation(location: BDLocation) {
+                    super.onReceiveLocation(location)
+                    Log.d(TAG, "onReceiveLocation: $location")
+                    if (location.locType == 61 || location.locType == 161) {
+                        getGeoCity(
+                            location.city,
+                            "",
+                            Range.CN,
+                            1,
+                            Lang.ZH_HANS,
+                            object : OnResultGeoListener {
+                                override fun onError(throwable: Throwable) {
+                                    toastError("获取定位失败")
                                 }
 
-                                @Override
-                                public void onSuccess(WeatherNowBean WeatherNowBean) {
-                                    AT.INSTANCE.toastSuccess(WeatherNowBean.getNow().getText());
+                                override fun onSuccess(geoBean: GeoBean) {
+                                    Log.d(TAG, "onSuccess: $geoBean")
+                                    val loc = geoBean.locationBean[0]
+                                    getWeather(loc.id, object : OnResultWeatherNowListener {
+                                        override fun onError(throwable: Throwable) {
+                                            toastError("获取天气失败")
+                                        }
 
+                                        override fun onSuccess(WeatherNowBean: WeatherNowBean) {
+                                            toastSuccess(WeatherNowBean.now.text)
+                                        }
+                                    })
                                 }
-                            });
-                        }
-                    });
-                } else {
-                    AT.INSTANCE.toastError("获取定位失败 code:" + location.getLocType());
-                    Log.d(TAG, "onReceiveLocation: error code " + location.getLocType());
+                            })
+                    } else {
+                        toastError("获取定位失败 code:" + location.locType)
+                        Log.d(TAG, "onReceiveLocation: error code " + location.locType)
+                    }
                 }
-            }
-        });
-    }
+            })
+        }
 }
